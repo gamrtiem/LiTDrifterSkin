@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be09e9a22eec4d4aa1b735607c1881c, type: 3}
+  m_Name: LiTDrifter
+  m_EditorClassIdentifier: 
+  modDependency:
+    value: 
+    type: 0
+  config:
+    generateEnableConfig: 1
+    enableConfigDefaultValue: 1
+    isExpanded: 1
+  bodyName: DrifterBody
+  nameTokenLocalizations:
+  - language: ICEBRO_SKIN_LITDRIFTER_NAME
+    value: Drifter (Lost in Transit)
+  - language: ICEBRO_SKIN_LITDRIFTER_DESC
+    value: 'man ,,.,. looks like we''re ,..,.,.,,. lost in transit or something ,..,.,.,,,.., '
+  icon:
+    createFromColors: 0
+    sprite: {fileID: 21300000, guid: 6314da631d496e21aaaea094b69515ff, type: 3}
+    colors:
+      left:
+        serializedVersion: 2
+        rgba: 7039999
+      top:
+        serializedVersion: 2
+        rgba: 4803071
+      right:
+        serializedVersion: 2
+        rgba: 6734335
+      bottom:
+        serializedVersion: 2
+        rgba: 16771196
+    isExpanded: 0
+  unlockableName: 
+  baseSkins:
+  - accessType: 0
+    name: 
+    index: 0
+    isExpanded: 1
+  renderersSource: 0
+  meshReplacements:
+  - mesh: {fileID: -1703765084990294903, guid: 3123a649a5631274b85892cf57ab376c, type: 3}
+    rendererReference:
+      accessType: 0
+      name: meshDrifter
+      path: 
+      isExpanded: 1
+  - mesh: {fileID: -4004087463907641788, guid: 3123a649a5631274b85892cf57ab376c, type: 3}
+    rendererReference:
+      accessType: 0
+      name: meshBag
+      path: 
+      isExpanded: 1
+  gameObjectActivations: []
+  rendererInfos:
+  - defaultMaterial: {fileID: 2100000, guid: e53c69697eb7820d9a413850534d7304, type: 2}
+    defaultShadowCastingMode: 0
+    ignoreOverlays: 0
+    rendererReference:
+      accessType: 0
+      name: meshDrifter
+      path: 
+      isExpanded: 1
+  - defaultMaterial: {fileID: 2100000, guid: e53c69697eb7820d9a413850534d7304, type: 2}
+    defaultShadowCastingMode: 0
+    ignoreOverlays: 0
+    rendererReference:
+      accessType: 0
+      name: meshBag
+      path: 
+      isExpanded: 1
+  minionSkinReplacements: []
+  projectileGhostReplacements: []
+  lightReplacements: []
