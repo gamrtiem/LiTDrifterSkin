@@ -22,7 +22,7 @@ using SurvivorCatalog = On.RoR2.SurvivorCatalog;
 #pragma warning restore CS0618 // Type or member is obsolete
 namespace LiTDrifter
 {
-    [BepInPlugin("com.icebro.LiTDrifter","LiTDrifter","1.0.0")]
+    [BepInPlugin("com.icebro.LiTDrifter","LiTDrifter","1.0.1")]
     public partial class LiTDrifterPlugin : BaseUnityPlugin
     {
         internal static LiTDrifterPlugin Instance { get; private set; }
@@ -54,9 +54,12 @@ namespace LiTDrifter
         {
             orig(newSurvivorDefs);
 
-            SurvivorDef drifterDef = RoR2.SurvivorCatalog.FindSurvivorDefFromBody(BodyCatalog.FindBodyPrefab("DrifterBody"));
-            ModelSkinController drifterSkinController = drifterDef.displayPrefab.transform.Find("mdlDrifter").GetComponent<ModelSkinController>();
-            drifterSkinController.skins[0] = drifterSkin;
+            if (replaceDrifter.Value)
+            {
+                SurvivorDef drifterDef = RoR2.SurvivorCatalog.FindSurvivorDefFromBody(BodyCatalog.FindBodyPrefab("DrifterBody"));
+                ModelSkinController drifterSkinController = drifterDef.displayPrefab.transform.Find("mdlDrifter").GetComponent<ModelSkinController>();
+                drifterSkinController.skins[0] = drifterSkin;
+            }
         }
 
         void BeforeStart()
@@ -93,7 +96,7 @@ namespace LiTDrifter
         {
             orig(self);
             
-            self.SetStringByToken("ICEBRO_SKIN_LITDRIFTER_NAME", "Drifter (Lost in Transit)");
+            self.SetStringByToken("ICEBRO_SKIN_LITDRIFTER_NAME", "Lost in Transit");
             self.SetStringByToken("ICEBRO_SKIN_LITDRIFTER_DESC", "man ,,.,. looks like we're ,..,.,.,,. lost in transit or something ,..,.,.,,,.., ");
         }
 
@@ -119,10 +122,6 @@ namespace LiTDrifter
 
         private void AddDrifterBodyLiTDrifterSkin()
         {
-            if (!Instance.Config.Bind("LiTDrifter", "Enabled", true).Value)
-            {
-                return;
-            }
             var bodyName = "DrifterBody";
             var skinName = "LiTDrifter";
             try
@@ -177,14 +176,14 @@ namespace LiTDrifter
                         new CharacterModel.RendererInfo
                         {
                             defaultMaterial = assetBundle.LoadAsset<Material>(@"Assets/characterbodyexample/LiTDrifterShader.mat"),
-                            defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                            defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                             ignoreOverlays = false,
                             renderer = ThrowIfNull(0, "There is no renderer with the name \"meshDrifter\"", renderers.FirstOrDefault(r => r.name == "meshDrifter")),
                         },
                         new CharacterModel.RendererInfo
                         {
                             defaultMaterial = assetBundle.LoadAsset<Material>(@"Assets/characterbodyexample/LiTDrifterShader.mat"),
-                            defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off,
+                            defaultShadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On,
                             ignoreOverlays = false,
                             renderer = ThrowIfNull(1, "There is no renderer with the name \"meshBag\"", renderers.FirstOrDefault(r => r.name == "meshBag")),
                         },
